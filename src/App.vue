@@ -36,6 +36,7 @@ const success = () => {
       document.getElementById("widget").innerHTML =
         "Waiting for page response...";
       Cookies.set("access", "1", { expires: 0.0208 });
+      location.reload();
     } else {
       show_logo("/logo/filtered.webm", 10, 10);
       document.getElementById("title").innerHTML = "Filtered";
