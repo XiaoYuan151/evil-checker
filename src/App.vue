@@ -7,10 +7,10 @@ const logo = ref(null);
 const token = ref<string | null>(null);
 const access = Cookies.get("access");
 const key = import.meta.env.VITE_CLOUDFLARE_TURNSTILE_SITE_KEY;
-if (access == "1") {
-  window.location.replace("//www.xiaoyuan151.com");
-}
 onMounted(() => {
+  if (access == "1") {
+    window.location.replace("//www.xiaoyuan151.com");
+  }
   show_logo("/logo/checking.webm", 11, 12);
 });
 
