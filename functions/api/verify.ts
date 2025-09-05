@@ -12,17 +12,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const cloudflare = request.headers.get("CF-Connecting-IP") || "";
   const data = await verifyCaptcha(secret, token, cloudflare);
   if (data.success) {
-    return new (Response as any)(
-      JSON.stringify({ message: "Captcha verified successfully" }),
-      {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
+    return new (Response as any)(JSON.stringify({ message: "Successful" }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+    });
   } else {
-    return new Response(JSON.stringify({ message: "Invalid captcha" }), {
+    return new Response(JSON.stringify({ message: "Filtered" }), {
       status: 400,
       headers: {
         "Content-Type": "application/json",
