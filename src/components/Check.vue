@@ -58,22 +58,49 @@ const success = () => {
 </script>
 <template>
   <div class="container">
-    <div id="logo" class="logo">
-      <video ref="logo" autoplay loop muted playsinline></video>
-      <audio ref="sfx" autoplay></audio>
+    <div class="header">
+      <div id="logo" class="logo">
+        <video ref="logo" autoplay loop muted></video>
+        <audio ref="sfx" autoplay></audio>
+      </div>
+      <div class="title">
+        <h1 id="title">Processing...</h1>
+        <h2 id="description">
+          Please wait while Evil is checking your browser.
+        </h2>
+      </div>
+      <div id="widget" class="turnstile">
+        <Turnstile v-model="token" :site-key="key" @complete="success" />
+      </div>
     </div>
-    <div class="title">
-      <h1 id="title">Processing...</h1>
-      <h2 id="description">Please wait while Evil is checking your browser.</h2>
-    </div>
-    <div id="widget" class="turnstile">
-      <Turnstile v-model="token" :site-key="key" @complete="success" />
+    <div class="footer">
+      Performance & Security by
+      <a href="https://www.xiaoyuan151.com/" target="_blank">XiaoYuan151</a>
     </div>
   </div>
 </template>
 <style scoped>
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--color-border-hover);
+}
+
 .container {
-  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100vh;
+  padding: 32px;
+}
+
+.header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo {
@@ -101,5 +128,10 @@ const success = () => {
 .turnstile {
   top: auto;
   left: auto;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
 }
 </style>
